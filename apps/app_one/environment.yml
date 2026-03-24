@@ -4,3 +4,5 @@ channels:
 dependencies:
   - python=3.9
   - streamlit=1.52.2
+  - pandas=3.0.1
+  
