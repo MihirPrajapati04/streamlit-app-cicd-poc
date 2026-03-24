@@ -3,8 +3,8 @@ name: Deploy Streamlit Apps to Snowflake
 on:
   push:
     branches:
-      - master         # auto deploy on push to main
-  workflow_dispatch:  # allows manual trigger from GitHub UI
+      - master
+  workflow_dispatch:
 
 env:
   PYTHON_VERSION: '3.12'
@@ -15,29 +15,24 @@ jobs:
     environment: dev
 
     steps:
-      # Step 1: Checkout the repository code
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # Step 2: Install Python
       - name: Install Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
-      # Step 3: Install Snowflake CLI
       - name: Install Snowflake CLI
         shell: bash
         run: |
           python -m pip install --upgrade pip
-          pip install snowflake-cli
+          pip install --upgrade snowflake-cli
 
-      # Step 4: Verify CLI installation
       - name: Verify Snowflake CLI Version
         shell: bash
         run: snow --version
 
-      # Step 5: Create Snowflake config with password injected from secrets
       - name: Create Snowflake Config
         shell: bash
         env:
@@ -45,15 +40,14 @@ jobs:
         run: |
           mkdir -p ~/.snowflake
           cp config.toml ~/.snowflake/config.toml
+          sed -i "s/SNOWFLAKE_PASSWORD_PLACEHOLDER/$SNOWFLAKE_PASSWORD/" ~/.snowflake/config.toml
           chmod 0600 ~/.snowflake/config.toml
-          
-      # Step 6: Deploy app one
+
       - name: Deploy App One
         shell: bash
         run: |
           snow streamlit deploy app_one --connection DEV --replace
 
-      # Step 7: Deploy app two
       # - name: Deploy App Two
       #   shell: bash
       #   run: |
