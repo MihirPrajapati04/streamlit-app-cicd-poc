@@ -1,0 +1,28 @@
+definition_version: 2
+entities:
+
+  app_one:
+    type: streamlit
+    identifier:
+      name: APP_ONE
+      database: STREAMLIT_APP
+      schema: STREAMLIT_APP_POC
+    query_warehouse: COMPUTE_WH
+    main_file: apps/app_one/streamlit_app.py
+    artifacts:
+      - apps/app_one/streamlit_app.py
+      - apps/app_one/environment.yml
+      - apps/app_one/pages/
+
+  app_two:
+    type: streamlit
+    identifier:
+      name: APP_TWO
+      database: STREAMLIT_APP
+      schema: STREAMLIT_APP_POC
+    query_warehouse: COMPUTE_WH
+    main_file: apps/app_two/second_app.py
+    artifacts:
+      - apps/app_two/second_app.py
+      - apps/app_two/environment.yml
+      - apps/app_two/pages/

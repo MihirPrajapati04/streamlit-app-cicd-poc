@@ -1,0 +1,7 @@
+[connections.DEV]
+account = "fniofia-px03401"
+user = "MIHIRPRAJAPATI04"
+database = "STREAMLIT_APP"
+schema = "STREAMLIT_APP_POC"
+warehouse = "COMPUTE_WH"
+role = "SYSADMIN"
