@@ -7,7 +7,7 @@ on:
   workflow_dispatch:  # allows manual trigger from GitHub UI
 
 env:
-  PYTHON_VERSION: '3.8'
+  PYTHON_VERSION: '3.11'
 
 jobs:
   deploy:
@@ -30,7 +30,7 @@ jobs:
         shell: bash
         run: |
           python -m pip install --upgrade pip
-          pip install snowflake-cli
+          pip install --upgrade snowflake-cli
 
       # Step 4: Verify CLI installation
       - name: Verify Snowflake CLI Version
