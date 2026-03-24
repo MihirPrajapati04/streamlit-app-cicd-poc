@@ -45,7 +45,7 @@ jobs:
         run: |
           mkdir -p ~/.snowflake
           cp config.toml ~/.snowflake/config.toml
-
+          chmod 0600 ~/.snowflake/config.toml
           
       # Step 6: Deploy app one
       - name: Deploy App One
