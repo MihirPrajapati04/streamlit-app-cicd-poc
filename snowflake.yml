@@ -10,7 +10,7 @@ entities:
     main_file: apps/app_one/streamlit_app.py
     artifacts:
       - apps/app_one/streamlit_app.py
-      - apps/app_one/environment.yml
+
 
   # app_two:
   #   type: streamlit
