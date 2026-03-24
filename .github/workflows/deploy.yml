@@ -7,7 +7,7 @@ on:
   workflow_dispatch:  # allows manual trigger from GitHub UI
 
 env:
-  PYTHON_VERSION: '3.11'
+  PYTHON_VERSION: '3.9'
 
 jobs:
   deploy:
