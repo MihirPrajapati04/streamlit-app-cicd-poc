@@ -3,7 +3,7 @@ name: Deploy Streamlit Apps to Snowflake
 on:
   push:
     branches:
-      - main          # auto deploy on push to main
+      - master         # auto deploy on push to main
   workflow_dispatch:  # allows manual trigger from GitHub UI
 
 env:
