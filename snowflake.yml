@@ -7,10 +7,10 @@ entities:
       database: STREAMLIT_APP
       schema: STREAMLIT_APP_POC
     query_warehouse: COMPUTE_WH
-    main_file: streamlit_app.py        # 👈 just filename, no folder path
+    main_file: app_one/streamlit_app.py        # 👈 just filename, no folder path
     artifacts:
-      - streamlit_app.py               # 👈 no apps/app_one/ prefix
-      - environment.yml
+      - app_one/streamlit_app.py               # 👈 no apps/app_one/ prefix
+      - app_one/environment.yml
 
   # app_two:
   #   type: streamlit
