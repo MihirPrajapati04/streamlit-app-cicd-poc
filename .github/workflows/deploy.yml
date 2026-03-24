@@ -48,7 +48,7 @@ jobs:
         run: |
           snow streamlit deploy app_one --connection DEV --replace
 
-      - name: Deploy App Two
-        shell: bash
-        run: |
-          snow streamlit deploy app_two --connection DEV --replace
+      # - name: Deploy App Two
+      #   shell: bash
+      #   run: |
+      #     snow streamlit deploy app_two --connection DEV --replace
