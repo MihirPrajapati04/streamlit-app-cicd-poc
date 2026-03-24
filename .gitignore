@@ -1,0 +1,11 @@
+echo "# Never commit these to GitHub
+__pycache__/
+*.pyc
+*.pyo
+.env
+.venv
+venv/
+*.egg-info/
+
+# Snowflake config with credentials - never push this
+~/.snowflake/config.toml" >> .gitignore
