@@ -1,75 +1,54 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 
 # Page config
 st.set_page_config(
-    page_title="My Streamlit App",
-    page_icon="🚀",
+    page_title="My Snowflake App",
+    page_icon="❄️",
     layout="wide"
 )
 
-# Title & intro
-st.title("🚀 My Dummy Streamlit App")
-st.markdown("Welcome! This is a **dummy Streamlit app** showcasing common components.")
+# Title
+st.title("❄️ My Snowflake Streamlit App")
+st.write("Welcome to my first Streamlit in Snowflake app!")
 
-st.divider()
-
-# --- Sidebar ---
-st.sidebar.header("⚙️ Controls")
-name = st.sidebar.text_input("Your Name", value="World")
-age = st.sidebar.slider("Your Age", min_value=1, max_value=100, value=25)
-theme = st.sidebar.selectbox("Favorite Color", ["Red", "Blue", "Green", "Purple"])
-st.sidebar.success(f"Hello, {name}! 👋")
-
-# --- Main Area ---
+# Simple metrics
 col1, col2, col3 = st.columns(3)
-col1.metric("Users", "1,234", "+12%")
-col2.metric("Revenue", "$5,678", "-3%")
-col3.metric("Uptime", "99.9%", "+0.1%")
 
-st.divider()
+with col1:
+    st.metric(label="Total Sales", value="$10,000", delta="5%")
 
-# --- Chart ---
-st.subheader("📈 Random Line Chart")
-chart_data = pd.DataFrame(
-    np.random.randn(20, 3),
-    columns=["Series A", "Series B", "Series C"]
-)
-st.line_chart(chart_data)
+with col2:
+    st.metric(label="Total Users", value="1,200", delta="12%")
 
-# --- Table ---
-st.subheader("📋 Sample Data Table")
-df = pd.DataFrame({
-    "Name": ["Alice", "Bob", "Charlie", "Diana"],
-    "Age": [28, 34, 22, 45],
-    "City": ["Mumbai", "Delhi", "Bangalore", "Chennai"],
-    "Score": [88, 92, 76, 95]
-})
+with col3:
+    st.metric(label="Active Sessions", value="340", delta="-2%")
+
+# Simple dataframe
+st.subheader("Sample Data")
+
+data = {
+    "Name":     ["Alice", "Bob", "Charlie", "David", "Eve"],
+    "Age":      [25, 30, 35, 28, 22],
+    "City":     ["New York", "London", "Paris", "Tokyo", "Sydney"],
+    "Sales":    [5000, 7000, 4500, 8000, 6000]
+}
+
+df = pd.DataFrame(data)
 st.dataframe(df, use_container_width=True)
 
-# --- User Input ---
-st.divider()
-st.subheader("💬 User Input")
-user_text = st.text_area("Write something:", placeholder="Type anything here...")
-if st.button("Submit"):
-    if user_text:
-        st.success(f"You said: *{user_text}*")
+# Simple chart
+st.subheader("Sales Chart")
+st.bar_chart(df.set_index("Name")["Sales"])
+
+# Simple input
+st.subheader("Search")
+search = st.text_input("Search by name")
+
+if search:
+    result = df[df["Name"].str.contains(search, case=False)]
+    if not result.empty:
+        st.success(f"Found {len(result)} result(s)")
+        st.dataframe(result, use_container_width=True)
     else:
-        st.warning("Please write something first!")
-
-# --- Progress / Status ---
-st.divider()
-st.subheader("⏳ Progress Bar")
-progress = st.slider("Progress", 0, 100, 60)
-st.progress(progress)
-
-# --- Expandable Section ---
-with st.expander("🔍 Show More Details"):
-    st.write(f"**Name:** {name}")
-    st.write(f"**Age:** {age}")
-    st.write(f"**Favorite Color:** {theme}")
-    st.info("This section is expandable!")
-
-st.divider()
-st.caption("Built with ❤️ using Streamlit")
+        st.warning("No results found")

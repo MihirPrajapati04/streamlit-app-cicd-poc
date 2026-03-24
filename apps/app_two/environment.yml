@@ -4,4 +4,3 @@ channels:
 dependencies:
   - streamlit
   - pandas
-  - numpy
