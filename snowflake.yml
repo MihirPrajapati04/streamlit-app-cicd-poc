@@ -12,14 +12,14 @@ entities:
       - apps/app_one/streamlit_app.py
       - apps/app_one/environment.yml
 
-  app_two:
-    type: streamlit
-    identifier:
-      name: APP_TWO
-      database: STREAMLIT_APP
-      schema: STREAMLIT_APP_POC
-    query_warehouse: COMPUTE_WH
-    main_file: apps/app_two/second_app.py
-    artifacts:
-      - apps/app_two/second_app.py
-      - apps/app_two/environment.yml
+  # app_two:
+  #   type: streamlit
+  #   identifier:
+  #     name: APP_TWO
+  #     database: STREAMLIT_APP
+  #     schema: STREAMLIT_APP_POC
+  #   query_warehouse: COMPUTE_WH
+  #   main_file: apps/app_two/second_app.py
+  #   artifacts:
+  #     - apps/app_two/second_app.py
+  #     - apps/app_two/environment.yml
