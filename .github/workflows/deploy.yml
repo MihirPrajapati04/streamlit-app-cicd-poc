@@ -55,7 +55,7 @@ jobs:
           snow streamlit deploy app_one --connection DEV --replace
 
       # Step 7: Deploy app two
-      - name: Deploy App Two
-        shell: bash
-        run: |
-          snow streamlit deploy app_two --connection DEV --replace
+      # - name: Deploy App Two
+      #   shell: bash
+      #   run: |
+      #     snow streamlit deploy app_two --connection DEV --replace
