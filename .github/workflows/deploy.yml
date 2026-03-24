@@ -45,9 +45,9 @@ jobs:
         run: |
           mkdir -p ~/.snowflake
           cp config.toml ~/.snowflake/config.toml
-          echo "password = \"$SNOWFLAKE_PASSWORD\"" >> ~/.snowflake/config.toml
+          sed -i "s/SNOWFLAKE_PASSWORD_PLACEHOLDER/$SNOWFLAKE_PASSWORD/" ~/.snowflake/config.toml
           chmod 0600 ~/.snowflake/config.toml
-
+          
       # Step 6: Deploy app one
       - name: Deploy App One
         shell: bash
